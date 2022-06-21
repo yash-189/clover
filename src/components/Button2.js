@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+
 
 const Button2 = (props) => {
     const style ={
@@ -23,9 +18,9 @@ const Button2 = (props) => {
     }
   return (
     <>
-   <a href={props.link}>
-    <button type="button" className="btn btn2" style={style}>{props.name}</button>
-    </a>
+   {/* <a href={props.link}> */}
+    <button type={props.type} className={`btn btn2 ${props.className}`} style={style}>{props.name}</button>
+    {/* </a> */}
     </>
   )
 }
@@ -33,6 +28,7 @@ const Button2 = (props) => {
 
 Button2.defaultProps = {
   width:"110px",
+  type:"button"
 }
 
 export default Button2

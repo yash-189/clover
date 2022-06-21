@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import Item from "./Item";
+import Spinner from './Spinner';
 import Vbutton from './Vbutton';
 import Vbutton2 from './Vbutton2';
 
 const Itemcomp = (props) => {
+    const [loading, setloading] = useState(false)
   
    
 
@@ -48,12 +50,14 @@ const Itemcomp = (props) => {
     //   };
       const [apiData, setapiData] = useState([])
       useEffect(() => {
-
+          setloading(true)
+        //   https://api.jikan.moe/v4/anime?q=demon&sfw
         const getData= async ()=>{
           const data =  await fetch("https://api.jikan.moe/v4/top/anime")
       
           const parsedData = await data.json()
           setapiData(parsedData.data)
+          setloading(false)
           // console.log(...apiData);
           
         }
@@ -69,17 +73,18 @@ const Itemcomp = (props) => {
 
             </div>
             
-            <div className="d-flex justify-content-md-between justify-content-around flex-wrap py-2 position-relative" style={{ padding: "0 30px" }}>
+            <div className="d-flex justify-content-lg-around justify-content-md-between justify-content-around flex-lg-nowrap flex-wrap py-2 position-relative" style={{ padding: "0 30px" }}>
             <Vbutton name={"ACTION"}/>
             
                 {apiData.slice(0,5).map((element, index) => {
-                    return <><div>
-                        <Item key={index} image={element.images.webp.image_url} title={element.title?element.title.slice(0,15):"not available"} element={element} link={element.trailer.url} /></div>
+                    return <><div key={index}  >
+                        <Item  image={element.images.webp.image_url} title={element.title?element.title.slice(0,15):"not available"} element={element} link={element.trailer.url} /></div>
                         <Vbutton2 name={"EXPLORE"}/></>
                 })}
+                {loading && <Spinner/>}
             </div>
 
-            <div className="d-flex justify-content-md-between justify-content-around flex-wrap py-2 position-relative" style={{ padding: "0 30px" }}>
+            <div className="d-flex  justify-content-lg-around justify-content-md-between justify-content-around flex-lg-nowrap flex-wrap py-2 position-relative" style={{ padding: "0 30px" }}>
             <Vbutton name={"SHOUNEM"}/>
         
                 {apiData.slice(5,10).map((element, index) => {
@@ -89,9 +94,10 @@ const Itemcomp = (props) => {
                         </>
                         
                 })}
+                {loading && <Spinner/>}
 
             </div>
-            <div className="d-flex justify-content-md-between justify-content-around flex-wrap py-2 position-relative" style={{ padding: "0 30px" }}>
+            <div className="d-flex justify-content-lg-around justify-content-md-between justify-content-around flex-lg-nowrap flex-wrap py-2 position-relative" style={{ padding: "0 30px" }}>
             <Vbutton name={"COMEDY"}/>
         
                 {apiData.slice(10,15).map((element, index) => {
@@ -101,6 +107,7 @@ const Itemcomp = (props) => {
                         </>
                         
                 })}
+                {loading && <Spinner/>}
 
             </div>
             </div>

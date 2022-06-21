@@ -15,7 +15,7 @@ const Item = (props) => {
     <div className='mx-2'>
     <a href={props.link} className="">
 
-                <img src={props.image} className="slideimage" style={mystyle} ></img>
+                <img src={props.image} alt='images' className="slideimage" style={mystyle} ></img>
                 </a>
                 <p className='text-dark text-center' style={{fontFamily: "Roboto, sans-serif"}} >{props.title}</p>
                 </div>

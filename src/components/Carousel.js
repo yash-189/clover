@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Item from "./Item";
-import anime from './images/anime.jpg'
+import Spinner from "./Spinner";
 
 
 
 
 const Carousel = (props) => {
+const [loading, setloading] = useState(false)
 const [apiData, setapiData] = useState([])
 
 
@@ -51,17 +52,20 @@ const [apiData, setapiData] = useState([])
   };
 
   useEffect(() => {
+    setloading(true)
 
   const getData= async ()=>{
     const data =  await fetch(props.url)
 
     const parsedData = await data.json()
     setapiData(parsedData.top)
+    setloading(false)
     // console.log(...apiData);
     
   }
   
     getData();
+    // eslint-disable-next-line
   }, [])
   // console.log(...apiData);
 
@@ -79,8 +83,9 @@ const [apiData, setapiData] = useState([])
     //   </div>
       <Slider {...settings}>
         {apiData.slice(props.items).map((element, index) => {
-          return <Item key={element} image={element.image_url} title={element.title?element.title.slice(0,20):"not available"} element={element} link={element} />
+          return <Item key={element} image={element.image_url} title={element.title?element.title.slice(0,20):"not available"} element={element} link={element.url} />
         })}
+            {loading && <Spinner/>}
       </Slider>
     // </div>
   );
