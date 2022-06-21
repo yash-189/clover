@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button2 from '../Button2';
 import background from '../images/background.jpg'
+import Spinner from '../Spinner';
 
 
 const Login = () => {
+  const [loading, setloading] = useState(false)
+
   const navigate = useNavigate();
   const [login, setlogin] = useState({
     email: "",
@@ -30,8 +33,10 @@ const Login = () => {
 const api = process.env.REACT_APP_LOGIN;
 
   const onSubmit = async (e) => {
+    setloading(true)
+
     e.preventDefault();
-    console.log("enterr");
+    // console.log("enterr");
     const response = await fetch(api, {
       method: 'POST',
       headers: {
@@ -40,12 +45,13 @@ const api = process.env.REACT_APP_LOGIN;
       body: JSON.stringify({ email: login.email, password: login.password })
     });
     const json = await response.json();
-    console.log(json);
+    // console.log(json);
     if (json.success) {
       localStorage.setItem('token', json.token);
+      setloading(false)
       navigate("/")
       // console.log("success");
-      console.log(localStorage.getItem("token"));
+      // console.log(localStorage.getItem("token"));
       // alert("Login successfully")
 
 
@@ -80,7 +86,10 @@ const api = process.env.REACT_APP_LOGIN;
             <input type="password" className="form-control" id="password" onChange={onChange} value={login.password} error={errors.password} placeholder='Enter password' />
           </div>
           <div type="submit" className="mt-5">
-            <Button2 name="Sign in" width={"100%"} type={"submit"} /></div>
+            {loading===false?
+            <Button2 name="Sign in" width={"100%"} type={"submit"} />:
+            <Spinner/>}
+            </div>
           
         </form>
       </div>

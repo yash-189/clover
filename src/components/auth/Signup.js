@@ -2,9 +2,12 @@ import React, {  useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import Button2 from "../Button2";
 import background from '../images/background.jpg'
+import Spinner from "../Spinner";
 
 
 const Signup = () => {
+  const [loading, setloading] = useState(false)
+
   const navigate = useNavigate();
   const [register, setregister] = useState({
     name: "",
@@ -36,6 +39,8 @@ const Signup = () => {
 
 const api = process.env.REACT_APP_REGISTER;
   const onSubmit = async (e) => {
+    setloading(true)
+
     e.preventDefault();
     const response = await fetch(api, {
       method: 'POST',
@@ -48,6 +53,7 @@ const api = process.env.REACT_APP_REGISTER;
     // console.log(json);
     if (json.success) {
       localStorage.setItem('token', json.authtoken);
+      setloading(false)
       navigate("/")
       // console.log("success");
 
@@ -90,7 +96,7 @@ const api = process.env.REACT_APP_REGISTER;
             <input type="password" className="form-control" id="password2" onChange={onChange} value={register.password2} error={errors.password2} placeholder="Confirm password" />
           </div>
           <div  className="mt-5">
-          <Button2 name="SIGN UP" width={"100%"} type={"submit"}/></div>
+          {loading===false?<Button2 name="SIGN UP" width={"100%"} type={"submit"}/>:<Spinner/>}</div>
         </form>
       </div>
     </>

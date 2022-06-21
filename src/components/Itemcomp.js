@@ -1,69 +1,12 @@
 import React,{useState,useEffect} from 'react'
+import { useGlobalContext } from './Context';
 import Item from "./Item";
 import Spinner from './Spinner';
 import Vbutton from './Vbutton';
 import Vbutton2 from './Vbutton2';
 
 const Itemcomp = (props) => {
-    const [loading, setloading] = useState(false)
-  
-   
-
-    // const settings = {
-    //     className: "center",
-    //     infinite: true,
-    //     centerPadding: "6px",
-    //     // padding:"0 80px",
-    //     slidesToShow: 5,
-    //     swipeToSlide: true,
-    //     afterChange: function (index) {
-    //       // console.log(
-    //       //   `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-    //       // );
-    //     }, responsive: [
-    //       {
-    //         breakpoint: 1024,
-    //         settings: {
-    //           slidesToShow: 3,
-    //           slidesToScroll: 3,
-    //           infinite: true,
-    //           dots: true
-    //         }
-    //       },
-    //       {
-    //         breakpoint: 600,
-    //         settings: {
-    //           slidesToShow: 2,
-    //           slidesToScroll: 2,
-    //           initialSlide: 2
-    //         }
-    //       },
-    //       {
-    //         breakpoint: 480,
-    //         settings: {
-    //           slidesToShow: 2,
-    //           slidesToScroll: 2
-    //         }
-    //       }
-    //     ]
-      
-    //   };
-      const [apiData, setapiData] = useState([])
-      useEffect(() => {
-          setloading(true)
-        //   https://api.jikan.moe/v4/anime?q=demon&sfw
-        const getData= async ()=>{
-          const data =  await fetch("https://api.jikan.moe/v4/top/anime")
-      
-          const parsedData = await data.json()
-          setapiData(parsedData.data)
-          setloading(false)
-          // console.log(...apiData);
-          
-        }
-        
-          getData();
-        }, [])
+   const {ImageBoxData, loading}= useGlobalContext();
 
     return (
         <div className="">
@@ -76,7 +19,7 @@ const Itemcomp = (props) => {
             <div className="d-flex justify-content-lg-around justify-content-md-between justify-content-around flex-lg-nowrap flex-wrap py-2 position-relative" style={{ padding: "0 30px" }}>
             <Vbutton name={"ACTION"}/>
             
-                {apiData.slice(0,5).map((element, index) => {
+                {ImageBoxData.slice(0,5).map((element, index) => {
                     return <><div key={index}  >
                         <Item  image={element.images.webp.image_url} title={element.title?element.title.slice(0,15):"not available"} element={element} link={element.trailer.url} /></div>
                         <Vbutton2 name={"EXPLORE"}/></>
@@ -87,7 +30,7 @@ const Itemcomp = (props) => {
             <div className="d-flex  justify-content-lg-around justify-content-md-between justify-content-around flex-lg-nowrap flex-wrap py-2 position-relative" style={{ padding: "0 30px" }}>
             <Vbutton name={"SHOUNEM"}/>
         
-                {apiData.slice(5,10).map((element, index) => {
+                {ImageBoxData.slice(5,10).map((element, index) => {
                     return <><div>
                         <Item key={index} image={element.images.webp.image_url} title={element.title?element.title.slice(0,15):"not available"} element={element} link={element.trailer.url} /></div> 
             <Vbutton2 name={"EXPLORE"}/>
@@ -100,7 +43,7 @@ const Itemcomp = (props) => {
             <div className="d-flex justify-content-lg-around justify-content-md-between justify-content-around flex-lg-nowrap flex-wrap py-2 position-relative" style={{ padding: "0 30px" }}>
             <Vbutton name={"COMEDY"}/>
         
-                {apiData.slice(10,15).map((element, index) => {
+                {ImageBoxData.slice(10,15).map((element, index) => {
                     return <><div>
                         <Item key={index} image={element.images.webp.image_url} title={element.title?element.title.slice(0,15):"not available"} element={element} link={element.trailer.url}/></div> 
             <Vbutton2 name={"EXPLORE"}/>

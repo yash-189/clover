@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Slider from "react-slick";
+import { useGlobalContext } from "./Context";
 import Item from "./Item";
 import Spinner from "./Spinner";
 
@@ -7,8 +8,8 @@ import Spinner from "./Spinner";
 
 
 const Carousel = (props) => {
-const [loading, setloading] = useState(false)
-const [apiData, setapiData] = useState([])
+
+  const {CarouselData,loading}= useGlobalContext();
 
 
   const settings = {
@@ -51,47 +52,18 @@ const [apiData, setapiData] = useState([])
 
   };
 
-  useEffect(() => {
-    setloading(true)
-
-  const getData= async ()=>{
-    const data =  await fetch(props.url)
-
-    const parsedData = await data.json()
-    setapiData(parsedData.top)
-    setloading(false)
-    // console.log(...apiData);
-    
-  }
-  
-    getData();
-    // eslint-disable-next-line
-  }, [])
-  // console.log(...apiData);
-
-  
-
 
 
 
   return (
-    // <div className="">
-    //   <div className="d-flex justify-content-between py-2" style={{ padding: "0 30px" }}>
-    //     <h6 className="subhead">{props.heading1}</h6>
-    //     <h6 className="sublink"><a href="/seeall" className=""> <div className="arrow"></div>{props.heading2}</a></h6>
-
-    //   </div>
       <Slider {...settings}>
-        {apiData.slice(props.items).map((element, index) => {
+        {CarouselData.slice(props.items).map((element, index) => {
           return <Item key={element} image={element.image_url} title={element.title?element.title.slice(0,20):"not available"} element={element} link={element.url} />
         })}
             {loading && <Spinner/>}
       </Slider>
-    // </div>
+    
   );
 }
 
-Carousel.defaultProps = {
-  url:"https://api.jikan.moe/v3/top/anime/1"
-}
 export default Carousel

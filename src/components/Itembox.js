@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
+import { useGlobalContext } from "./Context";
 import Image from "./Image";
 import Spinner from "./Spinner";
 
 
 
 const Itembox = (props) => {
-  const [loading, setloading] = useState(false)
-  const [apiData, setapiData] = useState([])
+  const {ImageBoxData,loading}= useGlobalContext();
+
   const settings = {
     className: "center",
     infinite: true,
@@ -46,22 +47,7 @@ const Itembox = (props) => {
     ]
 
   };
-  useEffect(() => {
-    setloading(true)
-    const getData = async () => {
-      const data = await fetch("https://api.jikan.moe/v4/top/anime")
 
-      const parsedData = await data.json()
-      setapiData(parsedData.data)
-      setloading(false)
-      // console.log(...apiData);
-
-    }
-
-
-    getData();
-  }, [])
-  // console.log(...apiData);
 
 
 
@@ -76,7 +62,7 @@ const Itembox = (props) => {
       </div>
       <Slider {...settings}>
 
-        {apiData.slice(20, 25).map((element, index) => {
+        {ImageBoxData.slice(20, 25).map((element, index) => {
           return <> <div className="row  px-3">
             <Image key={element.title} image={element.trailer.images.medium_image_url} title={element.title ? element.title.slice(0, 15) : "not available"} element={element}
               type={element.type}

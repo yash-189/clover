@@ -11,10 +11,13 @@ import Itemcomp from './Itemcomp'
 import Button2 from './Button2'
 import Coraitem from './Coraitem'
 import profile from './images/profile.png'
+import { useGlobalContext } from './Context';
 
 
 
 const Header = (props) => {
+    const { search, submitHandler, SearchAnime } = useGlobalContext();
+
     const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const style = {
@@ -35,16 +38,16 @@ const Header = (props) => {
         fontFamily: "Roboto, sans-serif"
     }
 
-    const [search, setsearch] = useState("");
-    const [url, seturl] = useState("https://api.jikan.moe/v3/top/anime/1")
+    // const [search, setsearch] = useState("");
+    // const [url, seturl] = useState("https://api.jikan.moe/v3/top/anime/1")
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-        console.log(search);
-        seturl(`https://api.jikan.moe/v4/anime?q=demon${search}`);
-        // getData()
-    }
-    // const onChange = (e) => { setsearch(e.target.value) }
+    // const submitHandler = (e) => {
+    //     e.preventDefault();
+    //     console.log(search);
+    //     seturl(`https://api.jikan.moe/v4/anime?q=demon${search}`);
+    //     // getData()
+    // }
+    // // const onChange = (e) => { setsearch(e.target.value) }
 
     const token = localStorage.getItem("token");
     //   if(token===!null){
@@ -72,7 +75,11 @@ const Header = (props) => {
                     {/* <div  style={{ maxWidth: "30rem", maxHeight: "41px" }}> */}
                     <form onSubmit={submitHandler} className="col-lg-6 col-12 order-lg-2 order-3 d-flex position-relative justify-content-md-center mt-md-5 mt-lg-0 " style={{ width: "", maxHeight: "41px" }}>
 
-                        <input type="search" className="form-control position-relative" placeholder="Search your favourite anime..." value={search} style={{ background: "#ffffff40", border: "2px solid white", borderRadius: "12px", color: "#7fff00ab", backdropFilter: "blur(1px)", maxWidth: "30rem", maxHeight: "41px" }} onChange={(e) => setsearch(e.target.value)} />
+                        <input type="search" className="form-control position-relative" placeholder="Search your favourite anime..." value={search} style={{
+                            background: "#ffffff40", border: "2px solid white", borderRadius: "12px", color: "#7fff00ab", backdropFilter: "blur(1px)", maxWidth: "30rem", maxHeight: "41px", fontSize: "18px",
+                            fontWeight: "600",
+                            fontFamily: " Comfortaa, cursive"
+                        }} onChange={(e) => SearchAnime(e.target.value)} />
 
                         <button className="btn position-absolute end-0  ms-n3" type="submit">
                             <i className="fa fa-search text-white"></i>
@@ -136,7 +143,7 @@ const Header = (props) => {
                         {token === null ? <> <div className=' me-3'>
                             <Link to="/register"><Button2 name="SIGN UP" width={"95px"} /></Link>
                         </div> <div>
-                                <Link to="/login"><Button name="LOGIN"  width={"95px"}/></Link>
+                                <Link to="/login"><Button name="LOGIN" width={"95px"} /></Link>
                             </div></> :
                             <>
                                 <div>
@@ -172,7 +179,7 @@ const Header = (props) => {
             <div className='container position-relative text-white mt-5 mt-md-0' style={{ top: "-90px" }}>
                 <div className="">
                     <Coraitem heading1={"Trending Now"} heading2={"See all"} />
-                    <Carousel items={(0, 1)} url={url} />
+                    <Carousel items={(0, 1)} />
                 </div>
 
             </div>
