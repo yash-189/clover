@@ -310,6 +310,36 @@
   transform: scale(1.02);
   z-index: 20;
 }
+.header-section{
+  min-height: 26em;
+}
+
+
+@media (max-width: 1400px) {
+  .vbtn{
+    left: -42px;
+  }
+  .vbtn2{
+    right: -42px;
+  }
+}
+@media (max-width: 1200px) {
+  .vbtn {
+    left: -65px;
+    
+}
+.vbtn2{
+  right: -65px;
+}
+}
+@media (max-width: 991px) {
+  .header-section{
+    min-height: 20em;
+  }
+  .vbtn{
+
+  }
+}
 
 @media (max-width: 576px) {
       .slick-prev {
@@ -327,6 +357,12 @@
   }
  
   .user .form-control {
-    max-width: 16rem!important;
+    max-width:  18rem!important;
   }
+  .vbtn {
+    left: -64px;
+}
+.vbtn2 {
+  right: -64px;
+}
      }

@@ -38,16 +38,6 @@ const Header = (props) => {
         fontFamily: "Roboto, sans-serif"
     }
 
-    // const [search, setsearch] = useState("");
-    // const [url, seturl] = useState("https://api.jikan.moe/v3/top/anime/1")
-
-    // const submitHandler = (e) => {
-    //     e.preventDefault();
-    //     console.log(search);
-    //     seturl(`https://api.jikan.moe/v4/anime?q=demon${search}`);
-    //     // getData()
-    // }
-    // // const onChange = (e) => { setsearch(e.target.value) }
 
     const token = localStorage.getItem("token");
     //   if(token===!null){
@@ -73,7 +63,7 @@ const Header = (props) => {
                     </div>
 
                     {/* <div  style={{ maxWidth: "30rem", maxHeight: "41px" }}> */}
-                    <form onSubmit={submitHandler} className="col-lg-6 col-12 order-lg-2 order-3 d-flex position-relative justify-content-md-center mt-md-5 mt-lg-0 " style={{ width: "", maxHeight: "41px" }}>
+                    <form onSubmit={submitHandler} className="col-lg-5 col-xl-6 col-12 order-lg-2 order-3 d-flex position-relative justify-content-md-center mt-md-5 mt-lg-0 " style={{ width: "", maxHeight: "41px" }}>
 
                         <input type="search" className="form-control position-relative" placeholder="Search your favourite anime..." value={search} style={{
                             background: "#ffffff40", border: "2px solid white", borderRadius: "12px", color: "#7fff00ab", backdropFilter: "blur(1px)", maxWidth: "30rem", maxHeight: "41px", fontSize: "18px",
@@ -81,8 +71,8 @@ const Header = (props) => {
                             fontFamily: " Comfortaa, cursive"
                         }} onChange={(e) => SearchAnime(e.target.value)} />
 
-                        <button className="btn position-absolute end-0  ms-n3" type="submit">
-                            <i className="fa fa-search text-white"></i>
+                        <button className="btn position-absolute end-0  ms-n3 me-md-4 me-lg-0" type="submit" >
+                            <i className="fa fa-search text-white search-icon me-md-5  me-lg-0 me-xl-5"></i>
                         </button>
                         {/* <i className="fas fa-search"></i>
                             <i className="fa-thin fa-sliders"></i> */}
@@ -120,7 +110,7 @@ const Header = (props) => {
 
                     </div>
                 </div>
-                <div className='container text-white position-relative d-flex flex-column    justify-content-md-center align-items-center text-center' style={{ minHeight: "410px" }}>
+                <div className='container text-white position-relative d-flex flex-column    justify-content-md-center align-items-center text-center header-section' >
                     <div className='d-flex d-md-none pt-3 pb-4 py-md-0'>
                         <img src={logo} alt='logo' className="img-fluid" style={{ width: "30px", height: "30px" }} />
                         <h1 className=' ' style={{ fontFamily: 'Comfortaa, cursive' }}>lover</h1>
@@ -176,7 +166,7 @@ const Header = (props) => {
             </div>
 
 
-            <div className='container position-relative text-white mt-5 mt-md-0' style={{ top: "-90px" }}>
+            <div className='container position-relative text-white mt-5 mt-md-0 ' style={{ top: "-90px" }}>
                 <div className="">
                     <Coraitem heading1={"Trending Now"} heading2={"See all"} />
                     <Carousel items={(0, 1)} />
