@@ -165,7 +165,8 @@
 .user .form-control {
   background-color: #ffffff47!important;
   width: 25rem!important;
-  color: #86CC1C!important;
+  color:  #ffffff!important;
+  font-weight: 600;
 }
 
 

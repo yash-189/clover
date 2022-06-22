@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate, Link, NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import Button2 from '../Button2';
 import background from '../images/background.jpg'
 import Spinner from '../Spinner';
@@ -15,10 +15,10 @@ const Login = () => {
     password: "",
     errors: {}
   })
-  const userData = {
-    email: login.email,
-    password: login.password
-  };
+  // const userData = {
+  //   email: login.email,
+  //   password: login.password
+  // };
   const { errors } = login;
 
 

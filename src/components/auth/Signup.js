@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useNavigate, Link } from 'react-router-dom'
 import Button2 from "../Button2";
 import background from '../images/background.jpg'
@@ -18,12 +18,12 @@ const Signup = () => {
     errors: {}
   })
 
-  const newUser = {
-    name: register.name,
-    email: register.email,
-    password: register.password,
-    password2: register.password2
-  };
+  // const newUser = {
+  //   name: register.name,
+  //   email: register.email,
+  //   password: register.password,
+  //   password2: register.password2
+  // };
   const { errors } = register;
 
 
