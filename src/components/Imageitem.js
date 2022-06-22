@@ -2,7 +2,7 @@ import React from 'react'
 import Button2 from './Button2'
 import Button3 from './Button3'
 
-const Image = ({title,type,image,genres1,genres2,genres3,genres4,status,link,synopsis,score,episodes}) => {
+const Imageitem = ({title,type,image,genres1,genres2,genres3,genres4,status,link,synopsis,score,episodes}) => {
     return (
         <>
             <div className='container '>
@@ -34,6 +34,6 @@ const Image = ({title,type,image,genres1,genres2,genres3,genres4,status,link,syn
     )
 }
 
-export default Image
+export default Imageitem
 
 

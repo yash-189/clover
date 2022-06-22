@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { useGlobalContext } from "./Context";
-import Image from "./Image";
+import Imageitem from "./Imageitem";
 import Spinner from "./Spinner";
 
 
@@ -64,7 +64,7 @@ const Itembox = (props) => {
 
         {ImageBoxData.slice(20, 25).map((element, index) => {
           return <> <div className="row  px-3">
-            <Image key={element.title} image={element.trailer.images.medium_image_url} title={element.title ? element.title.slice(0, 15) : "not available"} element={element}
+            <Imageitem key={element.title} image={element.trailer.images.medium_image_url} title={element.title ? element.title.slice(0, 15) : "not available"} element={element}
               type={element.type}
               genres1={element.genres.name}
               genres2={element.genres.name}

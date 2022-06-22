@@ -37,6 +37,7 @@ const Footer = () => {
                        <li className='nav-item'><a href='/' className='text-decoration-none text-white'>Contact Us</a></li>
                         </ul>
                     </footer>
+                  
                 </div>
             </div>
             </div>
