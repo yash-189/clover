@@ -337,6 +337,117 @@
   font-weight: 600;
 }
 
+.anime-details-page {
+  min-height: 100vh;
+}
+
+.anime-details-hero {
+  min-height: 360px;
+  padding-top: 4rem;
+}
+
+.anime-details-poster {
+  width: 100%;
+  border: 3px solid white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.anime-details-eyebrow {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d2f0d5;
+}
+
+.anime-details-title {
+  font-family: 'Comfortaa, cursive';
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.anime-details-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.anime-details-pill {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  color: white;
+  font-weight: 700;
+  padding: 0.6rem 1rem;
+  backdrop-filter: blur(2px);
+}
+
+.anime-details-copy,
+.anime-details-background {
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.8;
+  font-weight: 500;
+}
+
+.anime-details-genre {
+  background: #EDFAED;
+  border-radius: 12px;
+  color: #44C549;
+  font-weight: 700;
+  padding: 0.45rem 0.85rem;
+}
+
+.anime-details-card {
+  background: white;
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.anime-details-video-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: 16px;
+}
+
+.anime-details-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 16px;
+}
+
+.anime-details-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.anime-details-info-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid #eef1ee;
+}
+
+.anime-details-info-item span {
+  color: #6a7269;
+  font-weight: 600;
+}
+
+.anime-details-info-item strong {
+  color: #1f241f;
+  font-weight: 700;
+  text-align: right;
+}
+
 @media (max-width: 1400px) {
   .vbtn {
     left: -42px;
@@ -360,6 +471,10 @@
 @media (max-width: 991px) {
   .header-section {
     min-height: 20em;
+  }
+
+  .anime-details-hero {
+    padding-top: 2.5rem;
   }
 }
 

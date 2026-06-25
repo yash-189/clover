@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Button from './Button'
 
 const Imageitem = ({
+  id,
   title,
   type,
   image,
@@ -18,9 +20,9 @@ const Imageitem = ({
     <div className='container'>
       <div className="clearfix">
         <div className='col-12 px-3'>
-          <a href={link} target="_blank" rel="noreferrer" style={{ textAlign: "-webkit-center" }}>
+          <Link to={`/anime/${id}`} style={{ textAlign: "-webkit-center" }}>
             <img src={image} className="slideimage img-fluid col-md-6 float-lg-start mb-3 me-md-3" style={{ borderRadius: "12px" }} alt={title} />
-          </a>
+          </Link>
           <div className='d-flex flex-column justify-content-center justify-content-lg-start align-items-lg-start align-items-center '>
             {title.length < 15 ? <h3>{title.slice(0, 10)}<br />{title.slice(10, 15)}</h3> : <h3>{title}</h3>}
             <h6 className='genres d-none'>

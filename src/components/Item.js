@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Item = ({ image, title, link }) => {
+const Item = ({ id, image, title, link }) => {
   const style = {
     height: "216px",
     width: "162px",
@@ -12,9 +13,9 @@ const Item = ({ image, title, link }) => {
 
   return (
     <div className='mx-2'>
-      <a href={link} target="_blank" rel="noreferrer">
+      <Link to={`/anime/${id}`}>
         <img src={image} alt={title} className="slideimage" style={style} />
-      </a>
+      </Link>
       <p className='text-dark text-center' style={{ fontFamily: "Roboto, sans-serif" }}>{title}</p>
     </div>
   );

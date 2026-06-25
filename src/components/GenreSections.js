@@ -41,6 +41,7 @@ const GenreSections = ({ heading1, heading2 }) => {
             <React.Fragment key={anime.id}>
               <div>
                 <Item
+                  id={anime.id}
                   image={anime.image}
                   title={anime.title ? anime.title.slice(0, 15) : "not available"}
                   link={anime.trailerLink}

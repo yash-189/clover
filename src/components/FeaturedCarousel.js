@@ -68,6 +68,7 @@ const FeaturedCarousel = ({ heading1, heading2 }) => {
           {topAnime.slice(20, 25).map((anime) => (
             <div className="row px-3" key={anime.id}>
               <Imageitem
+                id={anime.id}
                 image={anime.largeImage}
                 title={anime.title ? anime.title.slice(0, 15) : "not available"}
                 type={anime.type}

@@ -73,6 +73,7 @@ const Carousel = ({ start = 0, end }) => {
     <Slider {...settings}>
       {items.map((anime) => (
         <Item
+          id={anime.id}
           key={anime.id}
           image={anime.image}
           title={anime.title ? anime.title.slice(0, 20) : "not available"}
