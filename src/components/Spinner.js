@@ -1,11 +1,10 @@
 import React from 'react'
-import loading from './loading.gif'
+import loading from '../assets/gifs/loading.gif'
 
 const Spinner = () => {
   return (
     <div className='text-center'>
-    <img src={loading} alt='loading'/>
-    
+      <img src={loading} alt='loading' />
     </div>
   )
 }

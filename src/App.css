@@ -14,18 +14,15 @@
 }
 
 .form-control::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: rgb(255, 255, 255);
   opacity: 0.7;
 }
 
 .form-control:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
   color: rgb(255, 255, 255);
 }
 
 .form-control::-ms-input-placeholder {
-  /* Microsoft Edge */
   color: rgb(255, 255, 255);
 }
 
@@ -33,7 +30,6 @@
   background: -webkit-linear-gradient(90deg, #86CC1C, #44C549);
   background-clip: text;
   font-weight: bolder;
-
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -132,8 +128,6 @@
   padding-top: 4px;
   padding-bottom: 4px;
   text-transform: uppercase;
-  
-
 }
 
 .vbtn2 {
@@ -156,27 +150,25 @@
   background: linear-gradient(90deg, #86CC1C, #44C549);
   color: #fff;
 }
-.user form{
+
+.user form {
   background-color: #ffffff36;
   border-radius: 25px;
   color: white;
 }
 
 .user .form-control {
-  background-color: #ffffff47!important;
-  width: 25rem!important;
-  color:  #ffffff!important;
+  background-color: #ffffff47 !important;
+  width: 25rem !important;
+  color: #ffffff !important;
   font-weight: 600;
 }
-
-
 
 .effect {
   display: inline-block;
   overflow: hidden;
   text-indent: -20px;
 }
-
 
 .effect.effect-1 {
   transition: all 0.2s linear 0s;
@@ -209,16 +201,7 @@
   text-indent: -16px;
 }
 
-/* .btn3:hover {
-  background: linear-gradient(90deg, #86CC1C, #44C549);
-  color: #fff !important;
-  border-radius: 12px;
-  border: 2px solid;
-} */
-
-
-  
-.coolbeans{
+.coolbeans {
   border: 2px solid currentColor;
   border-radius: 12px;
   color: yellow;
@@ -233,137 +216,180 @@
   will-change: transform;
   z-index: 0;
 }
-.btn3::after{
+
+.btn3::after {
   background: linear-gradient(90deg, #86CC1C, #44C549);
-    border-radius: 12px;
-    content: '';
-    display: block;
-    height: 160%;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translate(-100%, 0) rotate(10deg);
-    transform-origin: top left;
-    transition: .2s transform ease-out;
-    will-change: transform;
-    z-index: -1;
-  }
-    
-  .btn3:hover::after{
-    transform: translate(0, 0);
-    /* border-radius: 15px; */
-  top: -1;}
-    
-    .btn3:hover{
-    border: 2px solid transparent;
-  color: #fff !important;
-    transform: scale(1.05);
-    will-change: transform;}
-    
-.btn2::after{
-  /* background: linear-gradient(90deg, #86CC1C, #44C549); */
-  background: #f8f9fa!important;
-    border-radius: 12px;
-    content: '';
-    display: block;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translate(-100%, 0) rotate(10deg);
-    transform-origin: top left;
-    transition: .2s transform ease-out;
-    will-change: transform;
-    z-index: -1;
-  }
-    
-  .btn2:hover::after{
-    transform: translate(0, 0);
-    /* border-radius: 15px; */
-  }
-    
-    .btn2:hover{
-    /* border: 2px solid transparent; */
-   
-  color: #86CC1C !important;
-    transform: scale(1.05);
-    will-change: transform;}
-    
-.slick-next,.slick-prev{
-  top: 36%!important;
+  border-radius: 12px;
+  content: '';
+  display: block;
+  height: 160%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-100%, 0) rotate(10deg);
+  transform-origin: top left;
+  transition: .2s transform ease-out;
+  will-change: transform;
+  z-index: -1;
 }
+
+.btn3:hover::after {
+  transform: translate(0, 0);
+  top: -1;
+}
+
+.btn3:hover {
+  border: 2px solid transparent;
+  color: #fff !important;
+  transform: scale(1.05);
+  will-change: transform;
+}
+
+.btn2::after {
+  background: #f8f9fa !important;
+  border-radius: 12px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-100%, 0) rotate(10deg);
+  transform-origin: top left;
+  transition: .2s transform ease-out;
+  will-change: transform;
+  z-index: -1;
+}
+
+.btn2:hover::after {
+  transform: translate(0, 0);
+}
+
+.btn2:hover {
+  color: #86CC1C !important;
+  transform: scale(1.05);
+  will-change: transform;
+}
+
+.slick-next,
+.slick-prev {
+  top: 36% !important;
+}
+
 .btn:focus {
   outline: 0;
-  box-shadow: none!important;
+  box-shadow: none !important;
 }
-.genres a{
-  background:-webkit-linear-gradient(60deg,#86CC1C, #44C549);
+
+.genres a {
+  background: -webkit-linear-gradient(60deg, #86CC1C, #44C549);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.arrow:hover{
+
+.arrow:hover {
   transform: scale(1.5);
 }
-.slideimage:hover{
+
+.slideimage:hover {
   transition: .2s transform ease-out;
   transform: scale(1.02);
   z-index: 20;
 }
-.header-section{
+
+.header-section {
   min-height: 26em;
 }
 
+.status-message {
+  min-height: 216px;
+  border: 2px dashed #d5e7d1;
+  border-radius: 15px;
+  background: #fff;
+}
+
+.status-message--error {
+  border-color: #f1b5b5;
+  background: #fff4f4;
+}
+
+.status-message__title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+.status-message__text {
+  color: #5e665c;
+}
+
+.auth-feedback {
+  border-radius: 12px;
+}
+
+.form-control.is-invalid {
+  border-color: #ffb3b3;
+}
+
+.invalid-feedback {
+  color: #ffd0d0;
+  font-weight: 600;
+}
 
 @media (max-width: 1400px) {
-  .vbtn{
+  .vbtn {
     left: -42px;
   }
-  .vbtn2{
+
+  .vbtn2 {
     right: -42px;
   }
 }
+
 @media (max-width: 1200px) {
   .vbtn {
     left: -65px;
-    
-}
-.vbtn2{
-  right: -65px;
-}
-}
-@media (max-width: 991px) {
-  .header-section{
-    min-height: 20em;
   }
-  .vbtn{
 
+  .vbtn2 {
+    right: -65px;
+  }
+}
+
+@media (max-width: 991px) {
+  .header-section {
+    min-height: 20em;
   }
 }
 
 @media (max-width: 576px) {
-      .slick-prev {
-        left: 65px!important;
-    }
-    .slick-next {
-      right: 70px!important;
+  .slick-prev {
+    left: 65px !important;
   }
-  .img-fluids{
+
+  .slick-next {
+    right: 70px !important;
+  }
+
+  .img-fluids {
     max-width: 100%;
     height: auto;
   }
-  .mobile-title{
+
+  .mobile-title {
     color: aqua;
   }
- 
+
   .user .form-control {
-    max-width:  18rem!important;
+    max-width: 18rem !important;
   }
+
   .vbtn {
     left: -64px;
+  }
+
+  .vbtn2 {
+    right: -64px;
+  }
 }
-.vbtn2 {
-  right: -64px;
-}
-     }

@@ -1,26 +1,23 @@
 import React from 'react'
 
-const Item = (props) => {
-  const mystyle = {
-    height:"216px",
+const Item = ({ image, title, link }) => {
+  const style = {
+    height: "216px",
     width: "162px",
-    margin:"auto",
-    border:"3px solid white",
+    margin: "auto",
+    border: "3px solid white",
     borderRadius: "15px",
-    overflow:"hidden"
-    
-  }
+    overflow: "hidden",
+  };
+
   return (
-    <> 
     <div className='mx-2'>
-    <a href={props.link} className="">
+      <a href={link} target="_blank" rel="noreferrer">
+        <img src={image} alt={title} className="slideimage" style={style} />
+      </a>
+      <p className='text-dark text-center' style={{ fontFamily: "Roboto, sans-serif" }}>{title}</p>
+    </div>
+  );
+};
 
-                <img src={props.image} alt='images' className="slideimage" style={mystyle} ></img>
-                </a>
-                <p className='text-dark text-center' style={{fontFamily: "Roboto, sans-serif"}} >{props.title}</p>
-                </div>
-    </>
-  )
-}
-
-export default Item
+export default Item;

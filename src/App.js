@@ -1,30 +1,25 @@
 import './App.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Home from './components/Home';
+import Home from './pages/Home';
 
 import {
   BrowserRouter as Router,
   Route,
   Routes
 } from "react-router-dom";
-import Signup from './components/auth/Signup';
-import Login from './components/auth/Login';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 
 function App() {
-
   return (
-    <>
-    
     <Router>
-    {/* <Home/> */}
-    <Routes>
-    <Route exact path="/"element={<Home/>}></Route>
-    <Route exact path="/register"element={<Signup/>}></Route>
-    <Route exact path="/login" element={<Login/>}></Route>
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </Router>
-    </>
   );
 }
 

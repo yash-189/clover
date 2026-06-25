@@ -1,44 +1,37 @@
 import React from "react";
 import Slider from "react-slick";
-import { useGlobalContext } from "./Context";
+import { useGlobalContext } from "../context/AppContext";
 import Item from "./Item";
 import Spinner from "./Spinner";
+import StatusMessage from "./StatusMessage";
 
+const Carousel = ({ start = 0, end }) => {
+  const { search, searchResults, loadingSearch, searchError, reloadSearchResults } = useGlobalContext();
 
-
-
-const Carousel = (props) => {
-
-  const {CarouselData,loading}= useGlobalContext();
-
+  const items = searchResults.slice(start, end);
 
   const settings = {
     className: "center",
-    infinite: true,
+    infinite: items.length > 5,
     lazyLoad: true,
     centerPadding: "6px",
-    slidesToShow: 5,
+    slidesToShow: Math.min(items.length || 1, 5),
     swipeToSlide: true,
-    afterChange: function (index) {
-      // console.log(
-      //   `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-      // );
-    }, responsive: [
+    responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
+          slidesToShow: Math.min(items.length || 1, 3),
+          slidesToScroll: 1,
+          infinite: items.length > 3,
           dots: true
         }
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
+          slidesToShow: Math.min(items.length || 1, 2),
+          slidesToScroll: 1
         }
       },
       {
@@ -49,20 +42,44 @@ const Carousel = (props) => {
         }
       }
     ]
-
   };
 
+  if (loadingSearch) {
+    return <Spinner />;
+  }
 
+  if (searchError) {
+    return (
+      <StatusMessage
+        title="Could not load anime"
+        message={searchError}
+        actionLabel="Retry"
+        onAction={reloadSearchResults}
+        error
+      />
+    );
+  }
 
+  if (!items.length) {
+    return (
+      <StatusMessage
+        title="No anime found"
+        message={`No results found for "${search}".`}
+      />
+    );
+  }
 
   return (
-      <Slider {...settings}>
-        {CarouselData.slice(props.items).map((element, index) => {
-          return <Item key={element} image={element.image_url} title={element.title?element.title.slice(0,20):"not available"} element={element} link={element.url} />
-        })}
-            {loading && <Spinner/>}
-      </Slider>
-    
+    <Slider {...settings}>
+      {items.map((anime) => (
+        <Item
+          key={anime.id}
+          image={anime.image}
+          title={anime.title ? anime.title.slice(0, 20) : "not available"}
+          link={anime.link}
+        />
+      ))}
+    </Slider>
   );
 }
 
