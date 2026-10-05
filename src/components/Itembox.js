@@ -2,13 +2,10 @@ import React from "react";
 import Slider from "react-slick";
 import { useGlobalContext } from "./Context";
 import Imageitem from "./Imageitem";
-import Spinner from "./Spinner";
-
-
+import { ErrorRow, SpotlightSkeleton } from "./Skeleton";
 
 const Itembox = (props) => {
-  const {ImageBoxData,loading}= useGlobalContext();
-
+  const { popular, loadPopular } = useGlobalContext();
   const settings = {
     className: "center",
     infinite: true,
@@ -57,33 +54,32 @@ const Itembox = (props) => {
     <div className="">
       <div className="d-flex justify-content-between py-2" style={{ padding: "0 30px" }}>
         <h6 className="subhead " style={{ fontFamily: "Roboto, sans-serif" }} >{props.heading1}</h6>
-        <h6 className="sublink" style={{ fontFamily: "Roboto, sans-serif" }}><a href="/" className=""> <div className="arrow"></div>{props.heading2}</a></h6>
-
+        <h6 className="sublink" style={{ fontFamily: "Roboto, sans-serif" }}><a href="https://anilist.co/search/anime/popular" target="_blank" rel="noreferrer"> <div className="arrow"></div>{props.heading2}</a></h6>
       </div>
-      <Slider {...settings}>
-
-        {ImageBoxData.slice(20, 25).map((element, index) => {
-          return <> <div className="row  px-3">
-            <Imageitem key={element.title} image={element.trailer.images.medium_image_url} title={element.title ? element.title.slice(0, 15) : "not available"} element={element}
-              type={element.type}
-              genres1={element.genres.name}
-              genres2={element.genres.name}
-              genres3={element.genres.name}
-              genres4={element.genres.name}
-              status={element.status}
-              synopsis={element.synopsis ? element.synopsis.slice(0, 250) : "not"}
-              score={element.score}
-              episodes={element.episodes} link={element.trailer.url} />
-          </div>
-          </>
-
-        })}
-        {loading && <Spinner />}
-
-      </Slider>
-
+      {popular.loading && <SpotlightSkeleton />}
+      {popular.error && <ErrorRow message={popular.error} onRetry={loadPopular} />}
+      {!popular.loading && !popular.error && (
+        <Slider {...settings}>
+          {popular.items.slice(0, 5).map((a) => (
+            <div key={a.id} className="row px-3">
+              <Imageitem
+                image={a.image}
+                title={a.title || "not available"}
+                type={a.type}
+                genres={a.genres}
+                status={a.status}
+                synopsis={a.synopsis ? a.synopsis.slice(0, 250) : "No synopsis available"}
+                score={a.score}
+                episodes={a.episodes}
+                link={a.url}
+                trailer={a.trailer}
+              />
+            </div>
+          ))}
+        </Slider>
+      )}
     </div>
-
   );
 }
+
 export default Itembox

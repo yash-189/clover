@@ -11,12 +11,12 @@ import Itemcomp from './Itemcomp'
 import Button2 from './Button2'
 import Coraitem from './Coraitem'
 import profile from './images/profile.png'
-import { useGlobalContext } from './Context';
+import { GENRES, useGlobalContext } from './Context';
 
 
 
 const Header = (props) => {
-    const { search, submitHandler, SearchAnime } = useGlobalContext();
+    const { search, searchTerm, results, trending, popular, submitHandler, SearchAnime, clearSearch, loadTrending, loadPopular, loadGenre } = useGlobalContext();
 
     const navigate = useNavigate();
     const [show, setShow] = useState(false);
@@ -65,13 +65,13 @@ const Header = (props) => {
                     {/* <div  style={{ maxWidth: "30rem", maxHeight: "41px" }}> */}
                     <form onSubmit={submitHandler} className="col-lg-5 col-xl-6 col-12 order-lg-2 order-3 d-flex position-relative justify-content-md-center mt-md-5 mt-lg-0 " style={{ width: "", maxHeight: "41px" }}>
 
-                        <input type="search" className="form-control position-relative" placeholder="Search your favourite anime..." value={search} style={{
+                        <input type="search" aria-label="Search anime" className="form-control position-relative" placeholder="Search your favourite anime..." value={search} style={{
                             background: "#ffffff40", border: "2px solid white", borderRadius: "12px", color: "#7fff00ab", backdropFilter: "blur(1px)", maxWidth: "30rem", maxHeight: "41px", fontSize: "18px",
                             fontWeight: "600",
                             fontFamily: " Comfortaa, cursive"
                         }} onChange={(e) => SearchAnime(e.target.value)} />
 
-                        <button className="btn position-absolute end-0  ms-n3 me-md-4 me-lg-0" type="submit" >
+                        <button className="btn position-absolute end-0  ms-n3 me-md-4 me-lg-0" type="submit" aria-label="Search">
                             <i className="fa fa-search text-white search-icon me-md-5  me-lg-0 me-xl-5"></i>
                         </button>
                         {/* <i className="fas fa-search"></i>
@@ -118,14 +118,14 @@ const Header = (props) => {
 
 
                     <div className="d-flex d-md-none col-12 pb-5 pb-md-0" style={{}}>
-                        <input type="search" className="form-control" placeholder="Search your favourite anime..." style={{ background: "#ffffff40", border: "2px solid white", borderRadius: "12px", color: "#7fff00ab", backdropFilter: "blur(1px)" }} />
-                        <span className=" border-0 " style={{ position: "absolute", right: "15px" }}>
-                            <button className="btn   ms-n3" type="button">
+                        <form onSubmit={submitHandler} className="w-100 position-relative" role="search">
+                        <input type="search" className="form-control" placeholder="Search your favourite anime..." value={search} onChange={(e) => SearchAnime(e.target.value)} aria-label="Search anime" style={{ background: "#ffffff40", border: "2px solid white", borderRadius: "12px", color: "#7fff00ab", backdropFilter: "blur(1px)" }} />
+                        <span className=" border-0 " style={{ position: "absolute", right: "15px", top: 0 }}>
+                            <button className="btn   ms-n3" type="submit" aria-label="Search">
                                 <i className="fa fa-search text-white"></i>
                             </button>
-                            {/* <i className="fas fa-search"></i>
-                            <i className="fa-thin fa-sliders"></i> */}
                         </span>
+                        </form>
                     </div>
 
                     <div className='d-flex col-md-3 col-12 order-md-2 order-1 mt-4 mb-5 pb-5 justify-content-center d-md-none '>
@@ -168,31 +168,43 @@ const Header = (props) => {
 
             <div className='container position-relative text-white mt-5 mt-md-0 ' style={{ top: "-90px" }}>
                 <div className="">
-                    <Coraitem heading1={"Trending Now"} heading2={"See all"} />
-                    <Carousel items={(0, 1)} />
+                    {searchTerm ? (
+                        <>
+                            <div className="d-flex justify-content-between py-2" style={{ padding: "0 30px" }}>
+                                <h6 className="subhead" style={{ fontFamily: "Roboto, sans-serif" }}>Results for "{searchTerm}"</h6>
+                                <button type="button" className="btn btn-link p-0 sublink text-decoration-none" onClick={clearSearch}>Clear search</button>
+                            </div>
+                            <Carousel list={results} dark onRetry={submitHandler} />
+                        </>
+                    ) : (
+                        <>
+                            <Coraitem heading1={"Trending Now"} heading2={"See all"} href="https://anilist.co/search/anime/trending" />
+                            <Carousel list={trending} dark onRetry={loadTrending} />
+                        </>
+                    )}
                 </div>
 
             </div>
             <div className='container position-relative mt-md-0 mt-0 '>
                 <div className="">
-                    <Coraitem heading1={"Most Popular"} heading2={"See all"} />
-                    <Carousel items={(15, 20)} />
+                    <Coraitem heading1={"Most Popular"} heading2={"See all"} href="https://anilist.co/search/anime/popular" />
+                    <Carousel list={{ ...popular, items: popular.items.slice(5) }} onRetry={loadPopular} />
                 </div>
             </div>
 
             <div className='container position-relative mt-md-5 mt-0 '>
-                <Itembox heading1={"Most Popular"} heading2={"See all"} />
+                <Itembox heading1={"Spotlight"} heading2={"See all"} />
             </div>
 
             <div className='container position-relative mt-md-5 mt-3  mb-5'>
-                <Itemcomp heading1={"Top Genres"} heading2={"See all"} />
+                <Itemcomp heading1={"Top Genres"} heading2={"See all"} genreIds={[1, 2, 3]} />
             </div>
 
             <div className='text-center mt-4 mb-5  d-md-block'>
 
-                {show === false ? <button type="button" className="btn btn3" onClick={() => { setShow(true) }} style={style}>Load More</button> : ""}
+                {show === false ? <button type="button" className="btn btn3" onClick={() => { setShow(true); GENRES.slice(3).forEach((g) => loadGenre(g.id)); }} style={style}>Load More</button> : ""}
                 {show && <div className='container position-relative mt-md-5 mt-3  mb-5'>
-                    <Itemcomp heading1={"Top Genres"} heading2={"See all"} />
+                    <Itemcomp genreIds={[4, 5, 6]} />
 
                 </div>}
 

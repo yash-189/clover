@@ -1,17 +1,9 @@
 import React from "react";
 import Slider from "react-slick";
-import { useGlobalContext } from "./Context";
 import Item from "./Item";
-import Spinner from "./Spinner";
+import { ErrorRow, PosterSkeleton } from "./Skeleton";
 
-
-
-
-const Carousel = (props) => {
-
-  const {CarouselData,loading}= useGlobalContext();
-
-
+const Carousel = ({ list, onRetry, dark }) => {
   const settings = {
     className: "center",
     infinite: true,
@@ -55,15 +47,27 @@ const Carousel = (props) => {
 
 
 
-  return (
-      <Slider {...settings}>
-        {CarouselData.slice(props.items).map((element, index) => {
-          return <Item key={element} image={element.image_url} title={element.title?element.title.slice(0,20):"not available"} element={element} link={element.url} />
-        })}
-            {loading && <Spinner/>}
-      </Slider>
-    
-  );
-}
+  if (list.error) return <ErrorRow message={list.error} onRetry={onRetry} dark={dark} />;
 
-export default Carousel
+  if (list.loading) {
+    return (
+      <div className="d-flex overflow-hidden py-2">
+        {Array.from({ length: 6 }, (_, i) => (
+          <PosterSkeleton key={i} dark={dark} />
+        ))}
+      </div>
+    );
+  }
+
+  if (list.items.length === 0) return <ErrorRow message="No anime found. Try another title." dark={dark} />;
+
+  return (
+    <Slider {...settings}>
+      {list.items.map((a) => (
+        <Item key={a.id} image={a.poster} title={a.title ? a.title.slice(0, 20) : "not available"} link={a.url} />
+      ))}
+    </Slider>
+  );
+};
+
+export default Carousel;

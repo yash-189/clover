@@ -13,9 +13,9 @@ const Item = (props) => {
   return (
     <> 
     <div className='mx-2'>
-    <a href={props.link} className="">
+    <a href={props.link} target="_blank" rel="noreferrer" className="">
 
-                <img src={props.image} alt='images' className="slideimage" style={mystyle} ></img>
+                <img src={props.image} alt={props.title} loading="lazy" className="slideimage" style={{ ...mystyle, objectFit: "cover" }} />
                 </a>
                 <p className='text-dark text-center' style={{fontFamily: "Roboto, sans-serif"}} >{props.title}</p>
                 </div>

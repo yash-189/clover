@@ -5,7 +5,7 @@ const Coraitem = (props) => {
     <>
      <div className="d-flex justify-content-between py-2" style={{ padding: "0 30px" }}>
         <h6 className="subhead" style={{fontFamily: "Roboto, sans-serif"}}>{props.heading1}</h6>
-        <h6 className="sublink" style={{fontFamily: "Roboto, sans-serif"}}><a href="/seeall" className=""> <div className="arrow"></div>{props.heading2}</a></h6>
+        <h6 className="sublink" style={{fontFamily: "Roboto, sans-serif"}}><a href={props.href || "https://anilist.co/search/anime"} target="_blank" rel="noreferrer" className=""> <div className="arrow"></div>{props.heading2}</a></h6>
 
       </div>
     </>
