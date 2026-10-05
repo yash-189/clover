@@ -56,7 +56,7 @@ const initialState = {
 const toAnime = (a) => ({
     id: a.id,
     title: a.title?.english || a.title?.romaji,
-    image: a.bannerImage || a.coverImage?.extraLarge || a.coverImage?.large,
+    image: a.coverImage?.extraLarge || a.coverImage?.large,
     poster: a.coverImage?.large,
     url: a.siteUrl,
     trailer: a.trailer?.site === "youtube" ? `https://www.youtube.com/watch?v=${a.trailer.id}` : null,
