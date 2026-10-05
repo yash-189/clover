@@ -4,6 +4,8 @@ An anime discovery web app built with React. Browse trending and popular anime, 
 
 **[Live demo](https://clover-stream.netlify.app)**
 
+![Clover mockup](docs/mockup.jpg)
+
 ## Features
 
 - Trending, most popular and spotlight sections from the free [AniList API](https://anilist.co), shown in carousels
@@ -11,6 +13,18 @@ An anime discovery web app built with React. Browse trending and popular anime, 
 - Sign up and log in with a JWT token stored on the client
 - Profile menu and logout once you're signed in
 - Skeleton loaders, error states with retry, and a responsive layout
+
+## Screenshots
+
+| Home | Spotlight and genres |
+|---|---|
+| ![Home](docs/home.jpg) | ![Spotlight and genres](docs/spotlight-genres.jpg) |
+
+| Search | Skeleton loaders |
+|---|---|
+| ![Search](docs/search.jpg) | ![Skeleton loaders](docs/skeleton.jpg) |
+
+<img src="docs/mobile.jpg" width="260" alt="Mobile" />
 
 ## Tech stack
 
