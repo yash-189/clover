@@ -9,7 +9,7 @@ const Imageitem = ({ title, type, image, genres = [], status, link, trailer, syn
                 <div className="clearfix">
                     <div className='col-12 px-3'>
                     <a href={link} target="_blank" rel="noreferrer" style={{textAlign: "-webkit-center"}}>
-                        <img src={image} className="slideimage float-lg-start mb-3 me-lg-4" style={{ borderRadius: "12px", height: "360px", width: "auto", aspectRatio: "2 / 3", objectFit: "cover", maxWidth: "100%" }} alt={title} loading="lazy" />
+                        <img src={image} className="slideimage spotlight-img col-12 col-lg-6 float-lg-start mb-3 me-lg-4" alt={title} loading="lazy" />
                         </a>
                         <div className='d-flex flex-column justify-content-center justify-content-lg-start align-items-lg-start align-items-center '>
                             <h3>{title}</h3>

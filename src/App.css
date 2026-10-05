@@ -401,3 +401,16 @@
     animation: none;
   }
 }
+
+.spotlight-img {
+  height: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 992px) {
+  .spotlight-img {
+    height: 340px;
+  }
+}

@@ -10,10 +10,10 @@ export const PosterSkeleton = ({ dark }) => (
 export const SpotlightSkeleton = () => (
     <div className='container' aria-hidden>
         <div className='row px-3 align-items-center'>
-            <div className='col-lg-auto mb-3 d-flex justify-content-center'>
-                <div className='sk' style={{ height: "360px", width: "240px", borderRadius: "12px" }} />
+            <div className='col-lg-6 mb-3'>
+                <div className='sk' style={{ height: "340px", width: "100%", borderRadius: "12px" }} />
             </div>
-            <div className='col-lg'>
+            <div className='col-lg-6'>
                 <div className='sk' style={{ height: "28px", width: "60%", borderRadius: "8px" }} />
                 {[100, 95, 90, 70].map((w) => (
                     <div key={w} className='sk' style={{ height: "12px", width: `${w}%`, borderRadius: "6px", marginTop: "14px" }} />
