@@ -1,13 +1,13 @@
 # Clover
 
-An anime discovery web app built with **React**. Browse top anime, search titles and sign in to your own account.
+An anime discovery web app built with React. Browse top anime, search titles and sign in to your own account.
 
 ## Features
 
-- **Browse:** top anime list from the public [Jikan API](https://jikan.moe), shown in an image carousel
-- **Search:** search by title, with "Load More" pagination
-- **Auth:** sign up and log in with a JWT token stored on the client
-- **Protected UI:** profile menu and logout once you're signed in
+- Top anime list from the public [Jikan API](https://jikan.moe), shown in an image carousel
+- Search by title, with "Load More" pagination
+- Sign up and log in with a JWT token stored on the client
+- Profile menu and logout once you're signed in
 - Loading spinners and a responsive layout
 
 ## Tech stack
