@@ -36,8 +36,8 @@ npm install
 npm start
 ```
 
-To use login and signup, create a `.env` file with the backend endpoint:
+To use login, create a `.env` file pointing to the backend login endpoint:
 
 ```
-REACT_APP_LOGIN=<your-backend-url>/api/auth/login
+REACT_APP_LOGIN=<login-endpoint-url>
 ```
